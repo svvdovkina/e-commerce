@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('express-async-errors');
 
 //db
 const connectDB = require("./db/connectDB")
@@ -7,9 +8,14 @@ const connectDB = require("./db/connectDB")
 const errorHandler = require("./middleware/error-handler");
 const notFound = require("./middleware/not-found");
 
+// http logger
+const morgan = require("morgan");
+
 const express = require("express");
 
 const app = express();
+
+app.use(morgan('tiny'));
 app.use(express.json());
 
 
@@ -17,8 +23,13 @@ app.get("/", (req, res)=>{
     res.send("Hello")
 })
 
-app.use(errorHandler);
+const {BadRequestError} = require("./errors")
+app.get("/b",()=>{
+    throw new BadRequestError("baaadd...")
+});
+
 app.use(notFound);
+app.use(errorHandler);
 
 const port = process.env.PORT || 4500;
 const start = async ()=>{
