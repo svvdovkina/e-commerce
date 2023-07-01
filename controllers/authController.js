@@ -1,5 +1,27 @@
-const register = (req, res) =>{
-    res.send('register');
+const User = require("../models/User");
+const {StatusCodes} = require("http-status-codes");
+const CustomErrors = require("../errors")
+const {createJWT} = require("../utils/jwt");
+
+const register = async (req, res) =>{
+
+    const {email, name, password} = req.body;
+
+    const emailExists = await User.findOne({email});
+    if (emailExists) {
+        throw new CustomErrors.BadRequestError("Email already exists");
+    }
+
+    const user = await User.create({email, name, password} );
+
+    const tokenPayload = {
+        userId: user._id, 
+        name: user.name,
+        role: user.role
+    }
+    const token = createJWT({payload: tokenPayload});
+
+    res.status(StatusCodes.CREATED).json({user: tokenPayload, token});
 }
 
 const login = (req, res) =>{
