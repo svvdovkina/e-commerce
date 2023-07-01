@@ -11,6 +11,9 @@ const notFound = require("./middleware/not-found");
 // http logger
 const morgan = require("morgan");
 
+// routes
+const authRouter = require("./routes/authRoutes");
+
 const express = require("express");
 
 const app = express();
@@ -23,10 +26,7 @@ app.get("/", (req, res)=>{
     res.send("Hello")
 })
 
-const {BadRequestError} = require("./errors")
-app.get("/b",()=>{
-    throw new BadRequestError("baaadd...")
-});
+app.use("/api/v1/auth", authRouter);
 
 app.use(notFound);
 app.use(errorHandler);
