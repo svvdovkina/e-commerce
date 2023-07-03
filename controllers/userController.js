@@ -1,9 +1,20 @@
-const getAllUsers = (req, res)=>{
-    res.send("getAllUsers")
+const User = require("../models/User");
+const {StatusCodes} = require("http-status-codes");
+const CustomErrors = require("../errors");
+
+const getAllUsers = async (req, res)=>{
+    let users = await User.find({role: "user"}).select("-password");
+
+    res.status(StatusCodes.OK).json(users)
 }
 
-const getSingleUser = (req, res)=>{
-    res.send("getSingleUser")
+const getSingleUser = async (req, res)=>{
+
+    const user = await User.findById(req.params.id).select("-password");
+    if (!user) {
+        throw new CustomErrors.NotFound("Wrong user id");
+    }
+    res.status(StatusCodes.OK).json(user)
 }
 
 const showCurrentUser = (req, res)=>{
