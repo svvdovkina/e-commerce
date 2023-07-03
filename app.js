@@ -15,6 +15,7 @@ const cookieParser = require("cookie-parser");
 
 // routes
 const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
 
 const express = require("express");
 
@@ -35,6 +36,7 @@ app.get("/api/v1", (req, res)=>{
 })
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
 
 app.use(notFound);
 app.use(errorHandler);
