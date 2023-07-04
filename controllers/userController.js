@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const {StatusCodes} = require("http-status-codes");
 const CustomErrors = require("../errors");
+const {attachCookiesToResponse} = require("../utils")
 
 const getAllUsers = async (req, res)=>{
     let users = await User.find({role: "user"}).select("-password");
@@ -23,8 +24,30 @@ const showCurrentUser = (req, res)=>{
     res.status(StatusCodes.OK).json({user});
 }
 
-const updateUser = (req, res)=>{
-    res.send("updateUser")
+const updateUser = async (req, res)=>{
+    const {name, email} = req.body;
+
+    if (!email || !name) {
+        throw new CustomErrors.BadRequestError("Please provide email and name");
+    }
+    const userId = req.user.userId;
+
+    const user = await User.findByIdAndUpdate(
+        userId, 
+        {name, email}, 
+        {new: true, runValidators: true}
+        );
+
+    const tokenPayload = {
+        userId: user._id, 
+        name: user.name,
+        role: user.role
+    }
+    
+    attachCookiesToResponse({res, tokenPayload});
+
+    res.status(StatusCodes.OK).json({user: {...tokenPayload, email}});
+
 }
 
 const updateUserPassword = async (req, res)=>{
