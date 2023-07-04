@@ -27,8 +27,22 @@ const updateUser = (req, res)=>{
     res.send("updateUser")
 }
 
-const updateUserPassword = (req, res)=>{
-    res.send("updateUserPassword")
+const updateUserPassword = async (req, res)=>{
+    const {oldPassword, newPassword} = req.body;
+    if (!oldPassword || ! newPassword) {
+        throw new CustomErrors.BadRequestError("Please provide old and new passwords");
+    }
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+        throw new CustomErrors.UnauthorizedError("Nonexisting user")
+    }
+    if (!await user.comparePassword(oldPassword)) {
+        throw new CustomErrors.UnauthorizedError("Wrong old password");
+    }
+    user.password = newPassword;
+    await user.save();
+
+    res.status(StatusCodes.OK).json({msg: 'Password updated'});
 }
 
 module.exports = {
