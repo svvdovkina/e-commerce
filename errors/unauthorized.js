@@ -7,5 +7,13 @@ class UnauthorizedError extends CustomAPIError {
         super(StatusCodes.UNAUTHORIZED, msg)
     }
 }
+class ForbiddenError extends CustomAPIError {
+    constructor(msg){
+        super(StatusCodes.FORBIDDEN, msg)
+    }
+}
 
-module.exports = UnauthorizedError;
+module.exports = {
+    UnauthorizedError,
+    ForbiddenError
+};

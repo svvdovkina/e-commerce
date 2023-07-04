@@ -7,6 +7,7 @@ const connectDB = require("./db/connectDB")
 //custom middlwares
 const errorHandler = require("./middleware/error-handler");
 const notFound = require("./middleware/not-found");
+const {authenticateUser} = require("./middleware/authentication");
 
 // http logger
 const morgan = require("morgan");
@@ -31,12 +32,11 @@ app.get("/", (req, res)=>{
 
 
 app.get("/api/v1", (req, res)=>{
-    console.log(req.cookies);
     res.json(req.signedCookies)
 })
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/users", userRouter);
+app.use("/api/v1/users", authenticateUser, userRouter);
 
 app.use(notFound);
 app.use(errorHandler);
