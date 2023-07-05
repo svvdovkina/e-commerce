@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const {StatusCodes} = require("http-status-codes");
 const CustomErrors = require("../errors");
-const {attachCookiesToResponse} = require("../utils")
+const {attachCookiesToResponse, checkPermissions} = require("../utils")
 
 const getAllUsers = async (req, res)=>{
     let users = await User.find({role: "user"}).select("-password");
@@ -15,6 +15,7 @@ const getSingleUser = async (req, res)=>{
     if (!user) {
         throw new CustomErrors.NotFound("Wrong user id");
     }
+    checkPermissions(req.user, user._id);
     res.status(StatusCodes.OK).json(user)
 }
 
