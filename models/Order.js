@@ -50,6 +50,9 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    paymentIntentId: {
+        type: String
+    },
 
     cartItems: {
         type: [SingleCartItemSchema]
