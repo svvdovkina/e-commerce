@@ -5,7 +5,7 @@ const SingleCartItemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    iamge: {
+    image: {
         type: String,
         required: true
     },
@@ -49,9 +49,6 @@ const OrderSchema = new mongoose.Schema({
     clientSecret: {
         type: String,
         required: true
-    },
-    paymentIntentId: {
-        type: String,
     },
 
     cartItems: {
