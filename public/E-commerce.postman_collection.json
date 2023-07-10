@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "5a65fde4-7fea-4a3c-820e-6cc598f1bc9f",
+		"name": "E-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26749582"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/auth/login",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"svvd@svvd.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/auth/login",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"peter6\",\n    \"email\": \"peter6@peter.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/auth/register",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/auth/logout",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/users/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/users/64a02b736bf2f6ad7c2b210e",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"users",
+								"64a02b736bf2f6ad7c2b210e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Show me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/users/showMe",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"users",
+								"showMe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"svvd@svvd.com\",\n    \"name\": \"svvd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/users/updateUser",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"users",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update User Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"123456\",\n    \"newPassword\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/users/updateUserPassword",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"users",
+								"updateUserPassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"coffee table 2\",\n    \"company\": \"morgan\",\n    \"category\": \"office\",\n    \"description\": \"Coffee table for very good mornings\",\n    \"price\": \"160\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/products/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/products/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/products/64a574030dc633abea5a625b",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"products",
+								"64a574030dc633abea5a625b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"chair2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/products/64a574030dc633abea5a625b",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"products",
+								"64a574030dc633abea5a625b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/products/64a574810dc633abea5a625d",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"products",
+								"64a574810dc633abea5a625d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/svetlanavdovkina/Desktop/web/node/file-upload/images/computer-4.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/products/uploadImage",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"products",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Get All Reviesw",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/reviews/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/reviews/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/reviews/123",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"reviews",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update review",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/reviews/123",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"reviews",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/reviews/123",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"reviews",
+								"123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/orders/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"amount\": 34,\n        \"product\": \"64a7efae782321649668a340\"\n      }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/orders/",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentIntentId\": \"someval\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/api/v1/orders/64a9861b43ce009fe9b5050a",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"orders",
+								"64a9861b43ce009fe9b5050a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/orders/64a9861b43ce009fe9b5050a",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"orders",
+								"64a9861b43ce009fe9b5050a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get AllMyOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/api/v1/orders/showAllMyOrders",
+							"host": [
+								"http://localhost:4500/api/v1"
+							],
+							"path": [
+								"orders",
+								"showAllMyOrders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

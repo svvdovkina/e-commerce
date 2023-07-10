@@ -16,6 +16,14 @@ const cookieParser = require("cookie-parser");
 
 const fileUpload = require("express-fileupload");
 
+// security packages
+const rateLimiter = require('express-rate-limit');
+const helmet = require("helmet");
+const xss = require('xss-clean');
+const cors = require('cors');
+const mongoSanitize = require('express-mongo-sanitize');
+
+
 // routes
 const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
@@ -26,6 +34,17 @@ const orderRouter = require("./routes/orderRoutes");
 const express = require("express");
 
 const app = express();
+
+//security middlewares
+app.set('trust proxi', 1);
+app.use(rateLimiter({
+    windowMs: 15 * 60 * 1000,
+    max: 60
+}));
+app.use(helmet());
+app.use(cors());
+app.use(xss());
+app.use(mongoSanitize());
 
 app.use(morgan('tiny'));
 app.use(express.json());
