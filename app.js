@@ -53,15 +53,6 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));
 app.use(fileUpload());
 
-app.get("/", (req, res)=>{
-    res.send("Hello")
-})
-
-
-app.get("/api/v1", (req, res)=>{
-    res.json(req.signedCookies)
-})
-
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/products", productRouter);
